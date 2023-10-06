@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xidian.smartfactoryeas.dao.UserDao">
+
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="user.userid">
+        insert into user(userid,username,password,phonenum,createddate) values(default,#{user.username},#{user.password},#{user.phonenum},#{createddate})
+    </insert>
+
+    <delete id="deleteUser">
+        delete from user where username = #{username} and password = #{password}
+    </delete>
+
+    <select id="queryUser">
+        select userid,username,password,lastlogin,createddate from user where username = #{username}
+    </select>
+
+    <update id="loginUser">
+        update user set lastlogin = #{logindate} where username = #{user.username} and password = #{user.password}
+    </update>
+
+    <update id="updateUser">
+        update user set password = #{newpassword} where username = #{user.username} and password = #{user.password}
+    </update>
+
+</mapper>

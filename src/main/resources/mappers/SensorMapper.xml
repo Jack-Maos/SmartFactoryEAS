@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xidian.smartfactoryeas.dao.SensorDao">
+
+    <select id="querySensor">
+        select sensorid,wendu,shidu,qiwei,redate from sensorinfo order by sensorid desc limit 1
+    </select>
+
+    <select id="query10Sensor">
+        select sensorid,wendu,shidu,qiwei,redate from (select sensorid,wendu,shidu,qiwei,redate from sensorinfo order by sensorid desc limit 10) as subquery order by sensorid
+    </select>
+
+</mapper>
